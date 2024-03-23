@@ -1,0 +1,21 @@
+certifi==2023.7.22
+charset-normalizer==3.3.2
+filelock==3.13.1
+fsspec==2023.10.0
+huggingface-hub==0.17.3
+idna==3.4
+numpy==1.24.4
+packaging==23.2
+Pillow==10.1.0
+PyYAML==6.0.1
+regex==2023.10.3
+requests==2.31.0
+safetensors==0.4.0
+tokenizers==0.14.1
+torch==1.13.1+cu117
+torchaudio==0.13.1+cu117
+torchvision==0.14.1+cu117
+tqdm==4.66.1
+-e git+https://github.com/huggingface/transformers.git@af3de8d87c717c4bb090f037d0d89413c195a42f#egg=transformers
+typing_extensions==4.8.0
+urllib3==2.0.7
