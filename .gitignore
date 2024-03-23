@@ -7,7 +7,8 @@ bk_utils.py
 configs/
 checkpoints/
 run_qqplot.sh
-data/
+!data/
+data/*
 !data/xsum_test_keyword.json
 old/
 run.py

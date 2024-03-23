@@ -16,6 +16,5 @@ torch==1.13.1+cu117
 torchaudio==0.13.1+cu117
 torchvision==0.14.1+cu117
 tqdm==4.66.1
--e git+https://github.com/huggingface/transformers.git@af3de8d87c717c4bb090f037d0d89413c195a42f#egg=transformers
 typing_extensions==4.8.0
 urllib3==2.0.7

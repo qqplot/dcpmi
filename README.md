@@ -9,8 +9,8 @@ A primary challenge in abstractive summarization is hallucination---the phenomen
 
 ## Installation 
 Our code is based on Huggingface's `transformers>=4.35.0`.
-The following files are primarily modified.
 
+The following files are primarily modified.
 * [utils.py](https://github.com/qqplot/dcpmi/blob/main/transformers/src/transformers/generation/utils.py)
 * [modeling_bart.py](https://github.com/qqplot/dcpmi/blob/main/transformers/src/transformers/models/bart/modeling_bart.py)
 * [modeling_pegasus.py](https://github.com/qqplot/dcpmi/blob/main/transformers/src/transformers/models/pegasus/modeling_pegasus.py)
@@ -60,7 +60,7 @@ python evaluation.py --input_file "./results/2024-03-24T02:54:11_bart_ours.json"
 ```
 
 
-# Cite Our Work
+# Citation
 ```
 @inproceedings{
 chae2024mitigating,

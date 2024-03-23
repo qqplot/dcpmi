@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from transformers import BartForConditionalGeneration, BartTokenizer, pipeline, AutoConfig, AutoModelForCausalLM, PegasusForConditionalGeneration, PegasusTokenizer
 from datasets import load_dataset
 from evaluate import load
-from utils import init_parser, set_seed, generic_text_predictions
+from utils import init_parser, set_seed, generic_text_predictions, createFolder
 # from alignscore import AlignScore
 import sys, logging
 from torch.utils.data import DataLoader
@@ -103,7 +103,9 @@ def main(args):
     current_datetime = datetime.now()
     current_datetime_str = current_datetime.strftime("%Y-%m-%dT%H:%M:%S")
 
-    ### SETTING LOGGER    
+    ### SETTING LOGGER
+    createFolder('logs')
+    createFolder('results')    
     logging.basicConfig(
         filename=f"logs/{current_datetime_str}_{output_file}.log", filemode="w",
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
@@ -170,20 +172,10 @@ def main(args):
         user_kwargs["language_model"] = language_model                
         user_kwargs["lmda"] = args.lmda
         user_kwargs["tau"] = args.tau
-        # user_kwargs["alpha"] = args.alpha
-        # user_kwargs["beta"] = args.beta
-        # user_kwargs["gamma"] = args.gamma
         user_kwargs["eps"] = args.eps
-        
-        # user_kwargs["use_domain_summarization_model"] = args.use_domain_summarization_model        
         user_kwargs["only_decoder"] = args.only_decoder
         user_kwargs["run_type"] = args.run_type
-        user_kwargs["use_correct_cpmi"] = args.use_correct_cpmi
-        # user_kwargs["convert_length"] = args.convert_length
                         
-    # Load metric
-    # metric = load("rouge")
-    # scorer = AlignScore(model='roberta-large', batch_size=32, device=f'cuda:{args.gpu_id}', ckpt_path='checkpoints/AlignScore-large.ckpt', evaluation_mode='nli_sp', verbose=False)
     test_dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=False)
 
     for i, input_item in enumerate(tqdm(test_dataloader, desc="Predicting...")):

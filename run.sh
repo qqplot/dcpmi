@@ -1,26 +1,23 @@
 #!/bin/bash
 
-#SBATCH --job-name=hypers
-#SBATCH --partition=P2
-#SBATCH --nodes=1    
-#SBATCH --gres=gpu:1
-#SBATCH --time=0-12:00:00
-#SBATCH --mem=10GB
-#SBATCH --cpus-per-task=8
-#SBATCH --output=./slrum_logs/S-%x.%j.out     
-
-eval "$(conda shell.bash hook)"
-conda activate dcpmi
-
 # Beam 
-# srun python run.py --output_file output_beam.json --gpu_id 0 --run_type beam
+python run_batch.py --output_file bart_beam.json --gpu_id 0 --run_type beam --batch_size 2
 
 # CPMI
-# srun python run.py --output_file output_cpmi.json --gpu_id 0 --use_cpmi --run_type cpmi 
+python run_batch.py --output_file bart_cpmi.json --gpu_id 2 --run_type cpmi --batch_size 2
+
 
 # Ours
-# srun python run.py --output_file output_ours.json --gpu_id 0 --use_cpmi --run_type ours --alpha 0.6 --beta 0.01 --use_language_model --soft_uncertainty_weight
+model=bart                   # bart pegasus
+domain_type=prompt_keyword 
+prompt="in summary"
+lmda=0.065602   # 0.065602 0.074534 
+tau=3.5987      # 3.5987 3.304358 
+run_type=ours   # cpmi ours
+batch_size=2
+	
+srun python run_batch.py --output_file "${model}_${run_type}_${domain_type}.json" --gpu_id 0 --use_cpmi \
+                         --use_language_model --domain_type ${domain_type} --prompt "${prompt}" --run_type ${run_type} --model ${model} --batch_size $batch_size \
+                         --lmda ${lmda} --tau ${tau} \
+                         --in_file data/xsum_test_keyword.json
 
-
-# Search hyperparameters
-srun python search_hyperparameters.py --output_file ours.csv --gpu_id 0 --use_cpmi --run_type ours --use_language_model --soft_uncertainty_weight

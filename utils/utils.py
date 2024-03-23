@@ -13,7 +13,7 @@ def init_parser():
     parser.add_argument('--output_file', type=str, default='output.json')
     parser.add_argument('--gpu_id', type=int, default=0)
     parser.add_argument('--split', type=str, default='local', choices=['train', 'validation', 'test', 'local'])
-    parser.add_argument('--in_file', type=str, default='data/xsum500_keyword.json')
+    parser.add_argument('--in_file', type=str, default='data/xsum_test_keyword.json')
     parser.add_argument('--seed', type=int, default=42, help='random seed')
     parser.add_argument('--resume_index', type=int, default=0)
     parser.add_argument('--end_index', type=int, default=None)
