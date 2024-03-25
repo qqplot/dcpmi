@@ -56,7 +56,7 @@ To perform evaluation, you need to install the metrics.
 
 
 ```bash
-python evaluation.py --input_file "./results/2024-03-24T02:54:11_bart_ours.json" --output_file "eval.json" --batch_size 64 --alignscore_ckpt "/path/to/checkpoint"
+python evaluation.py --input_file "./results/2024-03-24T02:54:11_bart_ours.json" --output_file "eval.json" --batch_size 64 --alignscore_ckpt "/path/to/alignscore/checkpoint"
 ```
 
 
