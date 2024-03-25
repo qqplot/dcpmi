@@ -12,6 +12,7 @@ def init_parser():
     parser.add_argument('--input_file', type=str, default='input.json')
     parser.add_argument('--output_file', type=str, default='output.json')
     parser.add_argument('--batch_size', type=int, default=64)
+    parser.add_argument('--alignscore_ckpt', type=str, default='/path/to/checkpoint')
 
     return parser
 
@@ -37,8 +38,8 @@ def main(args):
 
     total_result = {}
 
-    # 1) AlignScore 32
-    align_scorer = AlignScore(model='roberta-base', batch_size=args.batch_size, device='cuda:0', ckpt_path='/shared/s2/lab01/qqplot/dcpmi/checkpoints/AlignScore-large.ckpt', evaluation_mode='nli_sp')
+    # 1) AlignScore
+    align_scorer = AlignScore(model='roberta-base', batch_size=args.batch_size, device='cuda:0', ckpt_path=args.alignscore_ckpt, evaluation_mode='nli_sp')
     alignscore_result = align_scorer.score(contexts=sources, claims=predictions)
     total_result['AlignScore'] = 100*np.mean(alignscore_result)
 
@@ -63,7 +64,7 @@ def main(args):
     factcc_result = 1 - np.mean(pred_result)
     total_result['FactCC'] = 100*factcc_result
 
-    # 3) BARTScore 16
+    # 3) BARTScore
     bart_scorer = BARTScorer(device='cuda:0', checkpoint='facebook/bart-large-cnn')
     bart_result = np.mean(bart_scorer.score(srcs=sources, tgts=predictions, batch_size=args.batch_size))
     total_result['BARTScore'] = bart_result
