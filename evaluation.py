@@ -12,7 +12,7 @@ def init_parser():
     parser.add_argument('--input_file', type=str, default='input.json')
     parser.add_argument('--output_file', type=str, default='output.json')
     parser.add_argument('--batch_size', type=int, default=64)
-    parser.add_argument('--alignscore_ckpt', type=str, default='/path/to/checkpoint')
+    parser.add_argument('--alignscore_ckpt', type=str, default='/path/to/alignscore/checkpoint')
 
     return parser
 
