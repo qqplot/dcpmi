@@ -1,6 +1,6 @@
 # Mitigating Hallucination in Abstractive Summarization with Domain-Conditional Mutual Information
 
-This is the official repo of the paper "[Mitigating Hallucination in Abstractive Summarization with Domain-Conditional Mutual Information](https://openreview.net/forum?id=N5gW9kxJ7Z)" We provide datasets for reproducing our results on XSUM. We do not guarantee exact reproducibility, as library versions and GPUs may cause small differences, but these should be extremely minor.
+This is the official repo of the paper "[Mitigating Hallucination in Abstractive Summarization with Domain-Conditional Mutual Information](https://openreview.net/forum?id=N5gW9kxJ7Z)." We provide datasets to reproduce our results on XSUM. We do not guarantee exact reproducibility, as library versions and GPUs may cause small differences, but these should be extremely minor.
 
 
 ## Abstract
