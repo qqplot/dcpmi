@@ -62,12 +62,23 @@ python evaluation.py --input_file "./results/2024-03-24T02:54:11_bart_ours.json"
 
 # Citation
 ```
-@inproceedings{
-chae2024mitigating,
-title={Mitigating Hallucination in Abstractive Summarization with Domain-Conditional Mutual Information},
-author={Kyubyung Chae and Jaepill choi and Yohan Jo and Taesup Kim},
-booktitle={2024 Annual Conference of the North American Chapter of the Association for Computational Linguistics},
-year={2024},
-url={https://openreview.net/forum?id=N5gW9kxJ7Z}
+@inproceedings{chae-etal-2024-mitigating,
+    title = "Mitigating Hallucination in Abstractive Summarization with Domain-Conditional Mutual Information",
+    author = "Chae, Kyubyung  and
+      Choi, Jaepill  and
+      Jo, Yohan  and
+      Kim, Taesup",
+    editor = "Duh, Kevin  and
+      Gomez, Helena  and
+      Bethard, Steven",
+    booktitle = "Findings of the Association for Computational Linguistics: NAACL 2024",
+    month = jun,
+    year = "2024",
+    address = "Mexico City, Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-naacl.117",
+    doi = "10.18653/v1/2024.findings-naacl.117",
+    pages = "1809--1820",
+    abstract = "A primary challenge in abstractive summarization is hallucination{---}the phenomenon where a model generates plausible text that is absent in the source text. We hypothesize that the domain (or topic) of the source text triggers the model to generate text that is highly probable in the domain, neglecting the details of the source text. To alleviate this model bias, we introduce a decoding strategy based on domain-conditional pointwise mutual information. This strategy adjusts the generation probability of each token by comparing it with the token{'}s marginal probability within the domain of the source text. According to evaluation on the XSUM dataset, our method demonstrates improvement in terms of faithfulness and source relevance.",
 }
 ```
